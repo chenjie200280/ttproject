@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.fav.FavInfoMapper">
+	<resultMap type="favInfo" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="title" column="title" javaType="java.lang.String" />
+		<result property="desc" column="desc" javaType="java.lang.String" />
+		<result property="url" column="url" javaType="java.lang.String" />
+		<result property="imageUrl" column="imageUrl" javaType="java.lang.String" />
+		<result property="typeid" column="typeid" javaType="java.lang.String" />
+		<result property="typename" column="typename" javaType="java.lang.String" />
+	</resultMap>
+	<sql id="column">
+		t.id,t.title,t.content,t.url,t.imageUrl,t.typeid,t.typename
+	</sql>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column" />
+		from fav_info_view t
+		<include refid="sql_where" />
+	</select>
+	
+	<select id="findByPage"  parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from
+        fav_info_view t
+        order by t.id desc
+        limit #{startRowNum},#{pageSize}
+    </select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from fav_info_view t
+        order by t.id desc
+    </select>
+    
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		t.id,t.title,t.content,t.url,t.imageUrl,t.typeid,t.typename
+		from fav_info_view t
+	</select>
+	
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="title != null  and title != '' ">
+                <![CDATA[
+		              AND t.title = #{title}
+            ]]>
+			</if>
+			<if test="typeid != null  and typeid != '' ">
+                <![CDATA[
+		              AND t.typeid = #{typeid}
+            ]]>
+			</if>
+		</where>
+	</sql>
+	<insert id="add" parameterType="favInfo">
+	    insert into fav_info (id,title,content,url,imageUrl,typeid)
+        values(#{id},#{title},#{content},#{url},#{imageUrl},#{typeid})
+    </insert>
+    <update id="update" parameterType="taoBaoUser">
+        update fav_info t
+        <set>
+            <if test="title != null  and title != '' ">
+                <![CDATA[t.title= #{title},]]>
+            </if>
+            <if test="content != null  and content != '' ">
+                <![CDATA[t.content= #{content},]]>
+            </if>
+            <if test="url != null  and url != '' ">
+                <![CDATA[t.url= #{url},]]>
+            </if>
+            <if test="imageUrl != null  and imageUrl != '' ">
+                <![CDATA[t.imageUrl= #{imageUrl},]]>
+            </if>
+            <if test="typeid != null  and typeid != '' ">
+                <![CDATA[t.typeid= #{typeid},]]>
+            </if>
+           
+        </set>
+        where t.id=#{id}
+    </update>
+   <delete id="deleteById" parameterType="java.lang.String">
+        delete from fav_info where id = #{id};
+    </delete>
+</mapper>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- start: Meta -->
+<meta charset="utf-8">
+<title>仪表盘-天天软件创意工作室</title>
+<!-- end: Meta -->
+<!-- start: Mobile Specific -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- end: Mobile Specific -->
+
+<!-- start: CSS -->
+<link id="bootstrap-style" href="css/common/bootstrap.min.css"
+	rel="stylesheet">
+<link href="css/common/bootstrap-responsive.min.css" rel="stylesheet">
+<link id="base-style" href="css/common/style.css" rel="stylesheet">
+<link id="base-style-responsive" href="css/common/style-responsive.css"
+	rel="stylesheet">
+<!-- end: CSS -->
+
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+		<link id="ie-style" href="css/common/ie.css" rel="stylesheet">
+	<![endif]-->
+
+<!--[if IE 9]>
+		<link id="ie9style" href="css/common/ie9.css" rel="stylesheet">
+	<![endif]-->
+
+</head>
+
+<body>
+	<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+				</a> <a class="brand" href="/admin/index.html"><span>天天软件创意工作室</span></a>
+
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<!-- start: User Dropdown -->
+						<li class="dropdown"><a class="btn dropdown-toggle"
+												data-toggle="dropdown" href="#"> <i
+								class="halflings-icon white user"></i>chenjie<span
+								class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-title"><span>账号设置</span></li>
+								<li>
+									<a href="#">
+										<i class="halflings-icon user"></i>
+										修改密码
+									</a>
+								</li>
+								<li>
+									<a href="login.html">
+										<i class="halflings-icon off"></i>
+										退出系统
+									</a>
+								</li>
+							</ul></li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+
+			</div>
+		</div>
+	</div>
+	<!-- start: Header -->
+
+	<div class="container-fluid-full">
+		<div class="row-fluid">
+
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+
+					</ul>
+				</div>
+			</div>
+			<!-- end: Main Menu -->
+
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>
+						You need to have <a href="http://en.wikipedia.org/wiki/JavaScript"
+							target="_blank">JavaScript</a> enabled to use this site.
+					</p>
+				</div>
+			</noscript>
+
+			<!-- start: Content -->
+			<div id="content" class="span10">
+
+
+				<ul class="breadcrumb">
+					<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
+						class="icon-angle-right"></i></li>
+					<li><a href="#">仪表盘</a></li>
+				</ul>
+
+				<div class="row-fluid">
+
+					<div class="span3 statbox purple" onTablet="span6"
+						onDesktop="span3">
+						<div class="boxchart">5,6,7,2,0,4,2,4,8,2,3,3,2</div>
+						<div class="number">
+							854<i class="icon-arrow-up"></i>
+						</div>
+						<div class="title">visits</div>
+						<div class="footer">
+							<a href="#"> read full report</a>
+						</div>
+					</div>
+					<div class="span3 statbox green" onTablet="span6" onDesktop="span3">
+						<div class="boxchart">1,2,6,4,0,8,2,4,5,3,1,7,5</div>
+						<div class="number">
+							123<i class="icon-arrow-up"></i>
+						</div>
+						<div class="title">sales</div>
+						<div class="footer">
+							<a href="#"> read full report</a>
+						</div>
+					</div>
+					<div class="span3 statbox blue noMargin" onTablet="span6"
+						onDesktop="span3">
+						<div class="boxchart">5,6,7,2,0,-4,-2,4,8,2,3,3,2</div>
+						<div class="number">
+							982<i class="icon-arrow-up"></i>
+						</div>
+						<div class="title">orders</div>
+						<div class="footer">
+							<a href="#"> read full report</a>
+						</div>
+					</div>
+					<div class="span3 statbox yellow" onTablet="span6"
+						onDesktop="span3">
+						<div class="boxchart">7,2,2,2,1,-4,-2,4,8,,0,3,3,5</div>
+						<div class="number">
+							678<i class="icon-arrow-down"></i>
+						</div>
+						<div class="title">visits</div>
+						<div class="footer">
+							<a href="#"> read full report</a>
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<div class="row-fluid hideInIE8 circleStats">
+
+					<div class="span2" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox yellow">
+							<div class="header">Disk Space Usage</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="58" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">20000</span> <span
+									class="unit">MB</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">50000</span> <span class="unit">MB</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="span2" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox green">
+							<div class="header">Bandwidth</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="78" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">5000</span> <span
+									class="unit">GB</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">5000</span> <span class="unit">GB</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="span2" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox greenDark">
+							<div class="header">Memory</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="100" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">64</span> <span
+									class="unit">GB</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">64</span> <span class="unit">GB</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="span2 noMargin" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox pink">
+							<div class="header">CPU</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="83" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">64</span> <span
+									class="unit">GHz</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">3.2</span> <span class="unit">GHz</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="span2" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox orange">
+							<div class="header">Memory</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="100" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">64</span> <span
+									class="unit">GB</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">64</span> <span class="unit">GB</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="span2" onTablet="span4" onDesktop="span2">
+						<div class="circleStatsItemBox greenLight">
+							<div class="header">Memory</div>
+							<span class="percent">percent</span>
+							<div class="circleStat">
+								<input type="text" value="100" class="whiteCircle" />
+							</div>
+							<div class="footer">
+								<span class="count"> <span class="number">64</span> <span
+									class="unit">GB</span>
+								</span> <span class="sep"> / </span> <span class="value"> <span
+									class="number">64</span> <span class="unit">GB</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+
+				<div class="row-fluid">
+
+					<a class="quick-button metro yellow span2"> <i
+						class="icon-group"></i>
+						<p>Users</p> <span class="badge">237</span>
+					</a> <a class="quick-button metro red span2"> <i
+						class="icon-comments-alt"></i>
+						<p>Comments</p> <span class="badge">46</span>
+					</a> <a class="quick-button metro blue span2"> <i
+						class="icon-shopping-cart"></i>
+						<p>Orders</p> <span class="badge">13</span>
+					</a> <a class="quick-button metro green span2"> <i
+						class="icon-barcode"></i>
+						<p>Products</p>
+					</a> <a class="quick-button metro pink span2"> <i
+						class="icon-envelope"></i>
+						<p>Messages</p> <span class="badge">88</span>
+					</a> <a class="quick-button metro black span2"> <i
+						class="icon-calendar"></i>
+						<p>Calendar</p>
+					</a>
+
+					<div class="clearfix"></div>
+
+				</div>
+				<!--/row-->
+
+
+
+			</div>
+			<!--/.fluid-container-->
+
+			<!-- end: Content -->
+		</div>
+		<!--/#content.span10-->
+	</div>
+	<!--/fluid-row-->
+
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>Settings</h3>
+		</div>
+		<div class="modal-body">
+			<p>Here settings can be configured...</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a> <a href="#"
+				class="btn btn-primary">Save changes</a>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<footer>
+
+		<p>
+			<span style="text-align: left; float: left">&copy; 2015 <a
+					href="http://www.ttsofts.com"
+					alt="天天软件创意工作室">天天软件创意工作室</a></span>
+
+		</p>
+
+	</footer>
+
+	<!-- start: JavaScript-->
+
+	<script src="js/common/jquery-1.9.1.min.js"></script>
+	<script src="js/common/jquery-migrate-1.0.0.min.js"></script>
+
+	<script src="js/common/jquery-ui-1.10.0.custom.min.js"></script>
+
+	<script src="js/common/jquery.ui.touch-punch.js"></script>
+
+	<script src="js/common/modernizr.js"></script>
+
+	<script src="js/common/bootstrap.min.js"></script>
+
+	<script src="js/common/jquery.cookie.js"></script>
+
+	<script src='js/common/fullcalendar.min.js'></script>
+
+	<script src='js/common/jquery.dataTables.min.js'></script>
+
+	<script src="js/common/excanvas.js"></script>
+	<script src="js/common/jquery.flot.js"></script>
+	<script src="js/common/jquery.flot.pie.js"></script>
+	<script src="js/common/jquery.flot.stack.js"></script>
+	<script src="js/common/jquery.flot.resize.min.js"></script>
+
+	<script src="js/common/jquery.chosen.min.js"></script>
+
+	<script src="js/common/jquery.uniform.min.js"></script>
+
+	<script src="js/common/jquery.cleditor.min.js"></script>
+
+	<script src="js/common/jquery.noty.js"></script>
+
+	<script src="js/common/jquery.elfinder.min.js"></script>
+
+	<script src="js/common/jquery.raty.min.js"></script>
+
+	<script src="js/common/jquery.iphone.toggle.js"></script>
+
+	<script src="js/common/jquery.uploadify-3.1.min.js"></script>
+
+	<script src="js/common/jquery.gritter.min.js"></script>
+
+	<script src="js/common/jquery.imagesloaded.js"></script>
+
+	<script src="js/common/jquery.masonry.min.js"></script>
+
+	<script src="js/common/jquery.knob.modified.js"></script>
+
+	<script src="js/common/jquery.sparkline.min.js"></script>
+
+	<script src="js/common/counter.js"></script>
+
+	<script src="js/common/retina.js"></script>
+
+	<script src="js/common/custom.js"></script>
+	<!-- end: JavaScript-->
+
+	<script id="menu_tmp" type="text/html">
+		<li><a href="/admin/index.html"> <i class="icon-bar-chart"></i>
+			<span class="hidden-tablet">仪表盘</span></a></li>
+		<!-- for: ${list} as ${f}, ${index} -->
+		<li><a class="dropmenu" href="#">
+			<i class="icon-folder-close-alt"></i><span class="hidden-tablet">${f.name}</span></a>
+			<ul>
+				<!-- for: ${f.children} as ${f1}, ${index1} -->
+				<li><a class="submenu" href="${f1.url}"><i
+						class="icon-file-alt"></i><span class="hidden-tablet">${f1.name}</span></a></li>
+				<!-- /for -->
+			</ul>
+		</li>
+		<!-- /for -->
+    </script>
+
+
+	<script type="text/javascript" src="js/common/require.js" data-main="js/view/index.js"></script>
+
+</body>
+</html>

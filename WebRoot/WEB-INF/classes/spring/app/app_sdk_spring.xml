@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="appSdkMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.app.AppSdkMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="appSdkService" class="com.ttsofts.service.app.AppSdkService">
+		<property name="appSdkMapper" ref="appSdkMapper"/>
+	</bean>
+	
+	<bean id="appSdkAction" class="com.ttsofts.action.app.AppSdkAction">
+		<property name="appSdkService" ref="appSdkService"/>
+	</bean>
+	
+</beans>

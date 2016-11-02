@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.app.AppAdvertMapper">
+	<resultMap type="appAdvertView" id="resultMap">
+		<id property="appname" column="appname" javaType="java.lang.String" />
+		<result property="location" column="location" javaType="java.lang.String" />
+		<result property="sdk" column="sdk" javaType="java.lang.String" />
+		<result property="appid" column="appid" javaType="java.lang.String" />
+		<result property="adid" column="adid" javaType="java.lang.String" />
+		<result property="status" column="status" javaType="java.lang.String" />
+		<result property="aid" column="aid" javaType="java.lang.String" />
+		<result property="id" column="id" javaType="java.lang.String" />
+		<result property="locationid" column="locationid" javaType="java.lang.String" />
+		<result property="locationname" column="locationname" javaType="java.lang.String" />
+		<result property="sdkid" column="sdkid" javaType="java.lang.String" />
+		<result property="sdkname" column="sdkname" javaType="java.lang.String" />
+		<result property="osid" column="osid" javaType="java.lang.String" />
+	</resultMap>
+	<insert id="add" parameterType="appAdvertView">
+	    insert into app_advert (id,aid,locationid,sdkid,status,appid,adid)
+        values(#{id},#{aid},#{locationid},#{sdkid},#{status},#{appid},#{adid})
+    </insert>
+    <update id="update" parameterType="appAdvertView">
+        update app_advert t
+        <set>
+            <if test="aid != null  and aid != '' ">
+                <![CDATA[t.aid= #{aid},]]>
+            </if>
+            <if test="locationid != null  and locationid != '' ">
+                <![CDATA[t.locationid= #{locationid},]]>
+            </if>
+            <if test="sdkid != null  and sdkid != '' ">
+                <![CDATA[t.sdkid= #{sdkid},]]>
+            </if>
+            <if test="status != null  and status != '' ">
+                <![CDATA[t.status= #{status},]]>
+            </if>
+            <if test="appid != null  and appid != '' ">
+                <![CDATA[t.appid= #{appid},]]>
+            </if>
+            <if test="adid != null  and adid != '' ">
+                <![CDATA[t.adid= #{adid},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_advert where id = #{id};
+    </delete>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		t.appname,t.location,t.sdk,t.appid,t.adid,t.status,t.aid,t.id,t.locationid,t.sdkid,t.osid
+		from app_advert_view t
+	</select>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		t.appname,t.location,t.sdk,t.appid,t.adid,t.status,t.aid,t.id,t.locationid,t.locationname,t.sdkid,t.sdkname,t.osid
+		from app_advert_view t
+		<include refid="sql_where" />
+	</select>
+		<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="aid != null  and aid != '' ">
+                <![CDATA[
+		              AND t.aid = #{aid}
+            ]]>
+			</if>
+		</where>
+	</sql>
+</mapper>

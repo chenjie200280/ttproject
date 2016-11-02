@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- start: Meta -->
+<meta charset="utf-8">
+<title>资产管理-天天软件创意工作室</title>
+<!-- end: Meta -->
+<!-- start: Mobile Specific -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- end: Mobile Specific -->
+<!-- start: CSS -->
+<link id="bootstrap-style" href="../css/common/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../css/common/bootstrap-responsive.min.css" rel="stylesheet">
+<link id="base-style" href="../css/common/style.css" rel="stylesheet">
+<link id="base-style-responsive"
+	href="../css/common/style-responsive.css" rel="stylesheet">
+<!-- end: CSS -->
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+
+	<link id="ie-style" href="../css/common/ie.css" rel="stylesheet">
+	<![endif]-->
+<!--[if IE 9]>
+	<link id="ie9style" href="../css/common/ie9.css" rel="stylesheet">
+	<![endif]-->
+</head>
+
+<body>
+	<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse"
+				   data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</a> <a class="brand" href="/admin/index.html"><span>天天软件创意工作室</span></a>
+
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<!-- start: User Dropdown -->
+						<li class="dropdown"><a class="btn dropdown-toggle"
+												data-toggle="dropdown" href="#"> <i
+								class="halflings-icon white user"></i>chenjie<span
+								class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-title"><span>账号设置</span></li>
+								<li>
+									<a href="#">
+										<i class="halflings-icon user"></i>
+										修改密码
+									</a>
+								</li>
+								<li>
+									<a href="../login.html">
+										<i class="halflings-icon off"></i>
+										退出系统
+									</a>
+								</li>
+							</ul></li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+
+			</div>
+		</div>
+	</div>
+	<!-- start: Header -->
+
+	<div class="container-fluid-full">
+		<div class="row-fluid">
+
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+
+					</ul>
+				</div>
+			</div>
+			<!-- end: Main Menu -->
+
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>
+						You need to have <a href="http://en.wikipedia.org/wiki/JavaScript"
+							target="_blank">JavaScript</a> enabled to use this site.
+					</p>
+				</div>
+			</noscript>
+
+			<!-- start: Content -->
+			<div id="content" class="span10">
+
+
+				<ul class="breadcrumb">
+					<li><i class="icon-home"></i> <a href="/admin/index.html">首页</a> <i
+						class="icon-angle-right"></i></li>
+					<li><a href="/admin/money/moneycard.html">资金管理</a></li>
+				</ul>
+
+				<div class="row-fluid">
+					<div class="box span12">
+
+						<div class="box-header" data-original-title>
+							<h2>
+								<i class="halflings-icon user"></i><span class="break"></span>
+								<span id="totalcount"></span>
+								<span id="totalmoney"></span>
+							</h2>
+							<div class="box-icon">
+
+								<a href="#" class="btn-setting"><i
+									class="halflings-icon edit"></i></a> <a href="#"
+									class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+
+							</div>
+						</div>
+
+						<div class="box-content">
+							<table class="table table-bordered table-striped table-condensed">
+								<thead>
+									<tr>
+										<th>编号</th>
+										<th>银行卡</th>
+										<th>银行</th>
+										<th>姓名</th>
+										<th>余额</th>
+										<th>失效日期</th>
+										<th>验证ID</th>
+										<th>还款日期</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="listBody">
+
+								</tbody>
+							</table>
+							<div class="pagination pagination-centered">
+								<ul id="pagediv">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+
+				</div>
+				<!--/row-->
+
+
+
+			</div>
+			<!--/.fluid-container-->
+
+			<!-- end: Content -->
+		</div>
+		<!--/#content.span10-->
+	</div>
+	<!--/fluid-row-->
+
+	<div class="modal hide fade" id="myModal">
+
+	</div>
+
+
+
+	<div class="clearfix"></div>
+
+
+
+	<footer>
+
+		<p>
+			<span style="text-align: left; float: left">&copy; 2015 <a
+				href="http://www.ttsofts.com"
+				alt="天天软件创意工作室">天天软件创意工作室</a></span>
+
+		</p>
+
+	</footer>
+
+	<!-- start: JavaScript-->
+	<script src="../js/common/jquery-1.9.1.min.js"></script>
+	<script src="../js/common/jquery-migrate-1.0.0.min.js"></script>
+	<script src="../js/common/jquery-ui-1.10.0.custom.min.js"></script>
+	<script src="../js/common/jquery.ui.touch-punch.js"></script>
+	<script src="../js/common/modernizr.js"></script>
+	<script src="../js/common/bootstrap.min.js"></script>
+	<script src="../js/common/jquery.cookie.js"></script>
+	<script src='../js/common/fullcalendar.min.js'></script>
+	<script src='../js/common/jquery.dataTables.min.js'></script>
+	<script src="../js/common/excanvas.js"></script>
+	<script src="../js/common/jquery.flot.js"></script>
+	<script src="../js/common/jquery.flot.pie.js"></script>
+	<script src="../js/common/jquery.flot.stack.js"></script>
+	<script src="../js/common/jquery.flot.resize.min.js"></script>
+	<script src="../js/common/jquery.chosen.min.js"></script>
+	<script src="../js/common/jquery.uniform.min.js"></script>
+	<script src="../js/common/jquery.cleditor.min.js"></script>
+	<script src="../js/common/jquery.noty.js"></script>
+	<script src="../js/common/jquery.elfinder.min.js"></script>
+	<script src="../js/common/jquery.raty.min.js"></script>
+	<script src="../js/common/jquery.iphone.toggle.js"></script>
+	<script src="../js/common/jquery.uploadify-3.1.min.js"></script>
+	<script src="../js/common/jquery.gritter.min.js"></script>
+	<script src="../js/common/jquery.imagesloaded.js"></script>
+	<script src="../js/common/jquery.masonry.min.js"></script>
+	<script src="../js/common/jquery.knob.modified.js"></script>
+	<script src="../js/common/jquery.sparkline.min.js"></script>
+	<script src="../js/common/counter.js"></script>
+	<script src="../js/common/retina.js"></script>
+	<script src="../js/common/custom.js"></script>
+	<!-- end: JavaScript-->
+	<script type="text/javascript" src="../js/common/require.js"
+		data-main="../js/view/moneycard.js"></script>
+
+	<!--用户搜索-->
+	<script id="listTemp" type="text/html">
+		<!-- for: ${list} as ${f}, ${index} -->
+   		<tr>
+			<td class="center">${index|indexadd}</td>
+			<td class="center">${f.cardId}</td>
+			<td class="center">${f.bank}</td>
+			<td class="center">${f.accountName}</td>
+			<td class="center">${f.money}</td>
+			<td class="center">${f.loseDate}</td>
+			<td class="center">${f.validateId}</td>
+			<td class="center">${f.repaymentDate}</td>
+			<td class="center">
+               <a class="btn btn-info updateBtn" index="${index}" href="javascript:void(0)">
+ 				   <i class="halflings-icon white edit"></i>
+			   </a> 
+               <a class="btn btn-danger deleteBtn" id="${f.id}"   href="javascript:void(0)">
+				   <i class="halflings-icon white trash"></i>
+				</a>
+           </td>
+		</tr>
+		<!-- /for -->
+	</script>
+    <!--用户修改-->
+	<script id="updateTemp" type="text/html">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>
+				<!-- if: ${isupdate}==true -->
+					修改数据
+				<!-- else -->
+					添加数据
+				<!-- /if -->
+			</h3>
+		</div>
+		<input id="id" type="hidden" value="${id}">
+		<div class="modal-body">
+			<form class="form-horizontal">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">银行卡</label>
+						<div class="controls">
+							<input id="cardId" value="${cardId}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">银行</label>
+						<div class="controls">
+							<input id="bank" value="${bank}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">姓名</label>
+						<div class="controls">
+							<input id="accountName" value="${accountName}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">余额</label>
+						<div class="controls">
+							<input id="money" value="${money}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">失效日期</label>
+						<div class="controls">
+							<input id="loseDate" value="${loseDate}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">验证ID</label>
+						<div class="controls">
+							<input id="validateId" value="${validateId}" class="input-xlarge" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">还款日期</label>
+						<div class="controls">
+							<input id="repaymentDate" value="${repaymentDate}" class="input-xlarge" type="text">
+						</div>
+					</div>
+
+
+
+
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="javascript:void(0)" id="okBtn" class="btn btn-primary">保存</a>
+		</div>
+	</script>
+
+	<script id="menu_tmp" type="text/html">
+		<li><a href="/admin/index.html"> <i class="icon-bar-chart"></i>
+			<span class="hidden-tablet">仪表盘</span></a></li>
+		<!-- for: ${list} as ${f}, ${index} -->
+		<li><a class="dropmenu" href="#">
+			<i class="icon-folder-close-alt"></i><span class="hidden-tablet">${f.name}</span></a>
+			<ul>
+				<!-- for: ${f.children} as ${f1}, ${index1} -->
+				<li><a class="submenu" href="${f1.url}"><i class="icon-file-alt"></i><span class="hidden-tablet">${f1.name}</span></a></li>
+				<!-- /for -->
+			</ul>
+		</li>
+		<!-- /for -->
+	</script>
+
+</body>
+</html>

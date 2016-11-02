@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.user.UserInfoMapper">
+	<resultMap type="userInfoView" id="resultMap">
+	    <!-- 用户 -->
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="username" column="username" javaType="java.lang.String" />
+		<result property="password" column="password" javaType="java.lang.String" />
+		<result property="email" column="email" javaType="java.lang.String" />
+		<result property="begintime" column="begintime" javaType="java.util.Date" />
+		<result property="endtime" column="endtime" javaType="java.util.Date" />
+		<!-- 权限 -->
+		<result property="powerid" column="powerid" javaType="java.lang.String" />
+		<result property="powername" column="powername" javaType="java.lang.String" />
+	
+	</resultMap>
+	<sql id="column">
+       t.id,t.username,t.password,t.email,t.begintime,t.endtime,t.powerid,t.powername
+    </sql>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from user_info_view t
+		<include refid="sql_where"/>
+	</select>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from user_info_view t
+	</select>
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="username != null  and username != '' ">
+                <![CDATA[
+		              AND t.username = #{username}
+            ]]>
+			</if>
+			<if test="password != null  and password != '' ">
+                <![CDATA[
+		              AND t.password = #{password}
+            ]]>
+			</if>
+			<if test="email != null  and email != '' ">
+                <![CDATA[
+		              AND t.email = #{email}
+            ]]>
+			</if>
+		</where>
+	</sql>
+</mapper>

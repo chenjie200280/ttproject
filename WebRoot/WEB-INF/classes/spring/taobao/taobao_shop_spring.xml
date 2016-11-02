@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="taoBaoShopMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.taobao.TaoBaoShopMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="taoBaoShopService" class="com.ttsofts.service.taobao.TaoBaoShopService">
+		<property name="taoBaoShopMapper" ref="taoBaoShopMapper"/>
+	</bean>
+
+	<bean id="taoBaoShopAction" class="com.ttsofts.action.taobao.TaoBaoShopAction">
+		<property name="taoBaoShopService" ref="taoBaoShopService"/>
+	</bean>
+</beans>

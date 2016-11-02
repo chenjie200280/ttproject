@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- start: Meta -->
+    <meta charset="utf-8">
+    <title>应用管理-天天软件工作室</title>
+    <!-- end: Meta -->
+    <!-- start: Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- end: Mobile Specific -->
+    <!-- start: CSS -->
+    <link id="bootstrap-style" href="../css/common/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="../css/common/bootstrap-responsive.min.css" rel="stylesheet">
+    <link id="base-style" href="../css/common/style.css" rel="stylesheet">
+    <link id="base-style-responsive"
+          href="../css/common/style-responsive.css" rel="stylesheet">
+    <!-- end: CSS -->
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+
+    <link id="ie-style" href="../css/common/ie.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if IE 9]>
+    <link id="ie9style" href="../css/common/ie9.css" rel="stylesheet">
+    <![endif]-->
+</head>
+
+<body>
+<div class="row-fluid">
+    <div class="box span12">
+
+        <div class="box-header" data-original-title>
+            <h2>
+                <i class="halflings-icon align-justify"></i><span class="break"></span> <span
+                    id="title"></span>
+            </h2>
+
+            <div class="box-icon">
+                <a href="#" class="btn-setting">
+                    <i class="halflings-icon edit"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="box-content">
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th class="center">序号</th>
+                    <th class="center">位置</th>
+                    <th class="center">SDK</th>
+                    <th class="center">状态</th>
+                    <th class="center">操作</th>
+                </tr>
+                </thead>
+                <tbody id="listBody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>
+<!--/row-->
+
+
+<!--/.fluid-container-->
+
+<!-- end: Content -->
+
+<!--/#content.span10-->
+
+
+<!--/fluid-row-->
+
+<div class="modal hide fade" id="myModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 id="modaltitle">
+
+        </h3>
+    </div>
+    <input id="id" type="hidden">
+
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label">位置</label>
+
+                    <div class="controls">
+
+                        <select id="location" class="input-medium">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">SDK</label>
+
+                    <div class="controls">
+
+                        <select id="sdkid" class="input-medium">
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">是否可见</label>
+
+                    <div class="controls">
+
+
+                        <select id="status" class="input-medium">
+                            <option value="1" selected="selected">可用</option>
+                            <option value="0">禁用</option>
+                        </select>
+
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="okBtn" class="btn btn-primary">保存</a>
+    </div>
+</div>
+
+
+<!-- start: JavaScript-->
+<script src="../js/common/jquery-1.9.1.min.js"></script>
+<script src="../js/common/jquery-migrate-1.0.0.min.js"></script>
+<script src="../js/common/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="../js/common/jquery.ui.touch-punch.js"></script>
+<script src="../js/common/modernizr.js"></script>
+<script src="../js/common/bootstrap.min.js"></script>
+<script src="../js/common/jquery.cookie.js"></script>
+<script src='../js/common/fullcalendar.min.js'></script>
+<script src='../js/common/jquery.dataTables.min.js'></script>
+<script src="../js/common/excanvas.js"></script>
+<script src="../js/common/jquery.flot.js"></script>
+<script src="../js/common/jquery.flot.pie.js"></script>
+<script src="../js/common/jquery.flot.stack.js"></script>
+<script src="../js/common/jquery.flot.resize.min.js"></script>
+<script src="../js/common/jquery.chosen.min.js"></script>
+<script src="../js/common/jquery.uniform.min.js"></script>
+<script src="../js/common/jquery.cleditor.min.js"></script>
+<script src="../js/common/jquery.noty.js"></script>
+<script src="../js/common/jquery.elfinder.min.js"></script>
+<script src="../js/common/jquery.raty.min.js"></script>
+<script src="../js/common/jquery.iphone.toggle.js"></script>
+<script src="../js/common/jquery.uploadify-3.1.min.js"></script>
+<script src="../js/common/jquery.gritter.min.js"></script>
+<script src="../js/common/jquery.imagesloaded.js"></script>
+<script src="../js/common/jquery.masonry.min.js"></script>
+<script src="../js/common/jquery.knob.modified.js"></script>
+<script src="../js/common/jquery.sparkline.min.js"></script>
+<script src="../js/common/counter.js"></script>
+<script src="../js/common/retina.js"></script>
+<script src="../js/common/custom.js"></script>
+<!-- end: JavaScript-->
+<script type="text/javascript" src="../js/common/require.js"
+        data-main="../js/view/appadvert.js"></script>
+
+<!--广告搜索-->
+<script id="listTemp" type="text/html">
+    <!-- for: ${list} as ${f}, ${index} -->
+    <tr>
+
+        <td class="center">${index|indexadd}</td>
+        <td class="center">${f.location|getAppAdvertLocationValue}</td>
+        <td class="center">${f.sdk|getAppAdvertSdkValue}</td>
+
+        <td class="center">
+            <!-- if: ${f.status}==0 --><span class="label">禁用</span>
+            <!-- else --><span class="label label-success">可用</span>
+            <!-- /if -->
+
+        </td>
+        <td class="center">
+
+            <a class="btn btn-info updateBtn" index="${index}" href="javascript:void(0)">
+                <i class="halflings-icon white edit"></i>
+            </a>
+            <a class="btn btn-danger deleteBtn" index="${index}" href="javascript:void(0)">
+                <i class="halflings-icon white trash"></i>
+            </a>
+        </td>
+    </tr>
+    <!-- /for -->
+</script>
+<script id="menu_tmp" type="text/html">
+    <li><a href="/admin/index.html"> <i class="icon-bar-chart"></i>
+        <span class="hidden-tablet">仪表盘</span></a></li>
+    <!-- for: ${list} as ${f}, ${index} -->
+    <li><a class="dropmenu" href="#">
+        <i class="icon-folder-close-alt"></i><span class="hidden-tablet">${f.name}</span></a>
+        <ul>
+            <!-- for: ${f.children} as ${f1}, ${index1} -->
+            <li><a class="submenu" href="${f1.url}"><i
+                    class="icon-file-alt"></i><span class="hidden-tablet">${f1.name}</span></a></li>
+            <!-- /for -->
+        </ul>
+    </li>
+    <!-- /for -->
+</script>
+
+
+</body>
+</html>

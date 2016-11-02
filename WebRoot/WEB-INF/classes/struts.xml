@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.multipart.maxSize" value="999999999999"/>
+	<include file="struts/app_struts.xml"/>
+	<include file="struts/user_struts.xml"/>
+	<include file="struts/taobao_struts.xml"/>
+	<include file="struts/fav_struts.xml"/>
+	<include file="struts/money_struts.xml"/>
+	<include file="struts/file_struts.xml"/>
+</struts>

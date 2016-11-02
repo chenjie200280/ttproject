@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppLogMapper">
+	<resultMap type="appLogView" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="mac" column="mac" javaType="java.lang.String"/>
+		<result property="aid" column="aid" javaType="java.lang.String"/>	
+		<result property="addtime" column="addtime" javaType="java.util.Date"/>	
+		<result property="appname" column="appname" javaType="java.lang.String"/>	
+		<result property="osname" column="osname" javaType="java.lang.String"/>	
+	</resultMap>
+	 <insert id="add" parameterType="appLogView">
+	    insert into app_log (id,mac,aid,addtime)
+        values(#{id},#{mac},#{aid},#{addtime})
+    </insert>
+    <update id="update" parameterType="appLogView">
+        update app_log t
+        <set>
+            <if test="mac != null  and mac != '' ">
+                <![CDATA[t.mac= #{mac},]]>
+            </if>
+            <if test="aid != null  and aid != '' ">
+                <![CDATA[t.aid= #{aid},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_log where id = #{id};
+    </delete>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        t.id,t.mac,t.aid,t.addtime,t.appname,t.osname
+        from app_log_view t order by t.addtime desc
+    </select>
+</mapper>

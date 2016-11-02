@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppOsMapper">
+	<resultMap type="appOs" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="os" column="os" javaType="java.lang.String"/>
+		<result property="osName" column="osName" javaType="java.lang.String"/>	
+	</resultMap>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        t.id,t.os,t.osName
+        from app_os t
+    </select>
+     <insert id="add" parameterType="appOs">
+	    insert into app_os (id,os,osName)
+        values(#{id},#{os},#{osName})
+    </insert>
+    <update id="update" parameterType="appOs">
+        update app_os t
+        <set>
+            <if test="os != null  and os != '' ">
+                <![CDATA[t.os= #{os},]]>
+            </if>
+            <if test="osName != null  and osName != '' ">
+                <![CDATA[t.osName= #{osName},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_os where id = #{id};
+    </delete>
+</mapper>

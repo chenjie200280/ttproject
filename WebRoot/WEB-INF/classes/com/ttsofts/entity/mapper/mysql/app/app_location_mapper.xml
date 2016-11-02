@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppLocationMapper">
+	<resultMap type="appLocation" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="location" column="location" javaType="java.lang.String"/>
+		<result property="locationName" column="locationName" javaType="java.lang.String"/>	
+	</resultMap>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        t.id,t.location,t.locationName
+        from app_location t
+    </select>
+    <insert id="add" parameterType="appLocation">
+	    insert into app_location (id,location,locationName)
+        values(#{id},#{location},#{locationName})
+    </insert>
+    <update id="update" parameterType="appLocation">
+        update app_location t
+        <set>
+            <if test="location != null  and location != '' ">
+                <![CDATA[t.location= #{location},]]>
+            </if>
+            <if test="locationName != null  and locationName != '' ">
+                <![CDATA[t.locationName= #{locationName},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_location where id = #{id};
+    </delete>
+</mapper>

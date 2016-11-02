@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="moneySalaryTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.money.MoneySalaryTypeMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+
+	<bean id="moneySalaryTypeAction" class="com.ttsofts.action.money.MoneySalaryTypeAction">
+		<property name="moneySalaryTypeMapper" ref="moneySalaryTypeMapper"/>
+	</bean>
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="appAdvertMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.app.AppAdvertMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="appAdvertService" class="com.ttsofts.service.app.AppAdvertService">
+		<property name="appAdvertMapper" ref="appAdvertMapper"/>
+	</bean>
+	
+	<bean id="appLogService" class="com.ttsofts.service.app.AppLogService">
+		<property name="appLogMapper" ref="appLogMapper"/>
+	</bean>
+	
+	<bean id="appAdvertAction" class="com.ttsofts.action.app.AppAdvertAction">
+		<property name="appAdvertService" ref="appAdvertService"/>
+	</bean>
+	
+</beans>

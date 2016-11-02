@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.money.MoneyPayMapper">
+	<resultMap type="moneyPay" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="money" column="money" javaType="java.lang.String" />
+		<result property="cardid" column="cardid" javaType="java.lang.String" />
+		<result property="remark" column="remark" javaType="java.lang.String" />
+		<result property="addtime" column="addtime" javaType="java.lang.String" />
+	</resultMap>
+	<sql id="column">
+        t.id,t.money,t.cardid,t.remark,t.addtime
+    </sql>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from money_pay t
+		<include refid="sql_where" />
+	</select>
+	
+
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from money_pay t
+	</select>
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="title != null  and title != '' ">
+                <![CDATA[
+		              AND t.cardid = #{cardid}
+            ]]>
+			</if>
+			<if test="addtime != null  and addtime != '' ">
+                <![CDATA[
+		              AND t.addtime = #{addtime}
+            ]]>
+			</if>
+		</where>
+	</sql>
+	<insert id="add" parameterType="moneyPay">
+	    insert into money_pay (id,money,cardid,remark,addtime)
+        values(#{id},#{money},#{cardid},#{remark},#{addtime})
+    </insert>
+    <update id="update" parameterType="moneyPay">
+        update money_pay t
+        <set>
+            <if test="money != null  and money != '' ">
+                <![CDATA[t.money= #{money},]]>
+            </if>
+            <if test="cardid != null  and cardid != '' ">
+                <![CDATA[t.cardid= #{cardid},]]>
+            </if>
+            <if test="remark != null  and remark != '' ">
+                <![CDATA[t.remark= #{remark},]]>
+            </if>
+            <if test="addtime != null  and addtime != '' ">
+                <![CDATA[t.addtime= #{addtime},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+</mapper>

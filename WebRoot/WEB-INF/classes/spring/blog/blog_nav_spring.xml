@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="blogNavMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.blog.BlogNavMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="blogNavService" class="com.ttsofts.service.blog.BlogNavService">
+		<property name="blogNavMapper" ref="blogNavMapper"/>
+	</bean>
+	
+	<bean id="blogNavAction" class="com.ttsofts.action.blog.BlogNavAction">
+		<property name="blogNavService" ref="blogNavService"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.taobao.TaoBaoTaskMapper">
+	<resultMap type="taoBaoTask" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="qq" column="qq" javaType="java.lang.String" />
+		<result property="username" column="username" javaType="java.lang.String" />
+		<result property="qt" column="qt" javaType="java.lang.String" />
+		<result property="shopid" column="shopid" javaType="java.lang.String" />
+		<result property="pay" column="pay" javaType="java.lang.String" />
+		<result property="salary" column="salary" javaType="java.lang.String" />
+		<result property="account" column="account" javaType="java.lang.String" />
+		<result property="ispay" column="ispay" javaType="java.lang.String" />
+		<result property="require" column="require" javaType="java.lang.String" />
+		<result property="remark" column="remark" javaType="java.lang.String" />
+		<result property="addtime" column="addtime" javaType="java.util.Date" />
+	</resultMap>
+	<select id="findByAll" resultMap="resultMap">
+		select
+		t.id,t.qq,t.username,t.qt,t.shopid,t.pay,t.salary,t.account,t.ispay,t.remark,t.addtime
+		from taobao_task t order by t.addtime desc
+	</select>
+
+	<sql id="column">
+		t.id,t.qq,t.username,t.qt,t.shopid,t.pay,t.salary,t.account,t.ispay,t.remark,t.addtime
+	</sql>
+
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(id) from taobao_task t
+		order by t.id desc
+	</select>
+
+	<select id="findByPage" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column" />
+		from
+		taobao_task t
+		order by t.id desc
+		limit #{startRowNum},#{pageSize}
+	</select>
+
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column" />
+		from
+		taobao_task t
+		<include refid="sql_where" />
+		order by t.id desc
+	</select>
+
+
+
+	<insert id="add" parameterType="taoBaoTask">
+		insert into
+		taobao_task(id,qq,username,qt,shopid,pay,salary,account,ispay,remark,addtime)
+		values(#{id},#{qq},#{username},#{qt},#{shopid},#{pay},#{salary},#{account},#{ispay},#{remark},#{addtime})
+	</insert>
+
+
+
+	<update id="update" parameterType="taoBaoTask">
+		update taobao_task t
+		<set>
+			<if test="qq != null  and qq != '' ">
+                <![CDATA[t.qq= #{qq},]]>
+			</if>
+			<if test="username != null  and username != '' ">
+                <![CDATA[t.username= #{username},]]>
+			</if>
+			<if test="qt != null  and qt != '' ">
+                <![CDATA[t.qt= #{qt},]]>
+			</if>
+			<if test="shopid != null  and shopid != '' ">
+                <![CDATA[t.shopid= #{shopid},]]>
+			</if>
+			<if test="pay != null  and pay != '' ">
+                <![CDATA[t.pay= #{pay},]]>
+			</if>
+			<if test="salary != null  and salary != '' ">
+                <![CDATA[t.salary= #{salary},]]>
+			</if>
+			<if test="account != null  and account != '' ">
+                <![CDATA[t.account= #{account},]]>
+			</if>
+			<if test="ispay != null  and ispay != '' ">
+                <![CDATA[t.ispay= #{ispay},]]>
+			</if>
+			<if test="remark != null">
+                <![CDATA[t.remark= #{remark},]]>
+			</if>
+
+			<if test="addtime != null  and addtime != '' ">
+                <![CDATA[t.addtime= #{addtime},]]>
+			</if>
+		</set>
+		where t.id=#{id}
+	</update>
+	<!--删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from taobao_task
+		where id = #{id}
+	</delete>
+
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			<if test="startDate != null">
+				
+				   t.addtime >= #{startDate}  AND
+				
+			   
+			</if>
+			<if test="endDate != null">
+			    
+			    	t.addtime &lt; #{endDate}
+				
+			</if>
+		</where>
+	</sql>
+</mapper>

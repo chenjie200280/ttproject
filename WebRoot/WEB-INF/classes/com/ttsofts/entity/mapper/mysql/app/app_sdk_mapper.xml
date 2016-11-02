@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppSdkMapper">
+	<resultMap type="appSdk" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="sdk" column="sdk" javaType="java.lang.String"/>
+		<result property="sdkName" column="sdkName" javaType="java.lang.String"/>	
+	</resultMap>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        t.id,t.sdk,t.sdkName
+        from app_sdk t
+    </select>
+    <insert id="add" parameterType="appSdk">
+	    insert into app_sdk (id,sdk,sdkName)
+        values(#{id},#{sdk},#{sdkName})
+    </insert>
+    <update id="update" parameterType="appSdk">
+        update app_sdk t
+        <set>
+            <if test="sdk != null  and sdk != '' ">
+                <![CDATA[t.sdk= #{sdk},]]>
+            </if>
+            <if test="sdkName != null  and sdkName != '' ">
+                <![CDATA[t.sdkName= #{sdkName},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_sdk where id = #{id};
+    </delete>
+</mapper>
