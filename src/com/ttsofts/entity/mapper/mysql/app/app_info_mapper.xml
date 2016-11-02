@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppInfoMapper">
+	<resultMap type="appInfo" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="appname" column="appname" javaType="java.lang.String"/>
+		<result property="packagename" column="packagename" javaType="java.lang.String"/>	
+		<result property="version" column="version" javaType="java.lang.String"/>	
+		<result property="os" column="os" javaType="java.lang.String"/>	
+		<result property="shop" column="shop" javaType="java.lang.String"/>	
+		<result property="url" column="url" javaType="java.lang.String"/>	
+		<result property="remark" column="remark" javaType="java.lang.String"/>	
+		<result property="addtime" column="addtime" javaType="java.util.Date"/>	
+	</resultMap>
+	
+	<sql id="column">
+         t.id,t.appname,t.packagename,t.version,t.version,t.os,t.shop,t.url,t.remark,t.addtime
+    </sql>
+	
+	<insert id="add" parameterType="appInfo">
+	    insert into app_info (id,appname,packagename,version,os,shop,url,remark,addtime)
+        values(#{id},#{appname},#{packagename},#{version},#{os},#{shop},#{url},#{remark},#{addtime})
+    </insert>
+    
+    <update id="update" parameterType="appInfo">
+        update app_info t
+        <set>
+            <if test="appname != null  and appname != '' ">
+                <![CDATA[t.appname= #{appname},]]>
+            </if>
+            <if test="packagename != null  and packagename != '' ">
+                <![CDATA[t.packagename= #{packagename},]]>
+            </if>
+            <if test="version != null  and version != '' ">
+                <![CDATA[t.version= #{version},]]>
+            </if>
+            <if test="os != null  and os != '' ">
+                <![CDATA[t.os= #{os},]]>
+            </if>
+            <if test="shop != null  and shop != '' ">
+                <![CDATA[t.shop= #{shop},]]>
+            </if>
+            <if test="url != null  and url != '' ">
+                <![CDATA[t.url= #{url},]]>
+            </if>
+            <if test="remark != null  and remark != '' ">
+                <![CDATA[t.remark= #{remark},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_info where id = #{id};
+    </delete>
+    
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from app_info t
+        order by t.addtime desc
+    </select>
+    
+    <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from app_info t
+        order by t.id desc
+    </select>
+    
+    <select id="findByPage"  parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from
+        app_info t
+        order by t.addtime desc
+        limit #{startRowNum},#{pageSize}
+    </select>
+</mapper>

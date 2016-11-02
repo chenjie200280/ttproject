@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.taobao.TaoBaoUserMapper">
+	<resultMap type="taoBaoUser" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="username" column="username" javaType="java.lang.String" />
+		<result property="userpwd" column="userpwd" javaType="java.lang.String" />
+		<result property="paypwd" column="paypwd" javaType="java.lang.String" />
+		<result property="dueIn" column="dueIn" javaType="java.lang.String" />
+		<result property="week" column="week" javaType="java.lang.String" />
+		<result property="month" column="month" javaType="java.lang.String" />
+		<result property="grade" column="grade" javaType="java.lang.String" />
+		<result property="vnum" column="vnum" javaType="java.lang.String" />
+	</resultMap>
+	
+    <select id="findByAll"  resultMap="resultMap">
+		select
+		 <include refid="column"/>
+		from taobao_user t  order by t.id desc
+	</select>
+	
+    <sql id="column">
+       	t.id,t.username,t.userpwd,t.paypwd,t.dueIn,t.week,t.month,t.grade,t.vnum
+    </sql>
+    
+    <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from taobao_user t
+        order by t.id desc
+    </select>
+    
+	
+    <select id="findByPage"  parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from
+        taobao_user t
+        order by t.id desc
+        limit #{startRowNum},#{pageSize}
+    </select>
+    
+	<insert id="add" parameterType="taoBaoUser">
+	    insert into taobao_user (id,username,userpwd,paypwd,dueIn,week,month,grade,vnum)
+        values(#{id},#{username},#{userpwd},#{paypwd},#{dueIn},#{week},#{month},#{grade},#{vnum})
+    </insert>
+    
+   <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from taobao_user where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="taoBaoUser">
+        update taobao_user t
+        <set>
+            <if test="username != null  and username != '' ">
+                <![CDATA[t.username= #{username},]]>
+            </if>
+            <if test="userpwd != null  and userpwd != '' ">
+                <![CDATA[t.userpwd= #{userpwd},]]>
+            </if>
+            <if test="paypwd != null  and paypwd != '' ">
+                <![CDATA[t.paypwd= #{paypwd},]]>
+            </if>
+            <if test="dueIn != null  and dueIn != '' ">
+                <![CDATA[t.dueIn= #{dueIn},]]>
+            </if>
+            <if test="week != null  and week != '' ">
+                <![CDATA[t.week= #{week},]]>
+            </if>
+            <if test="month != null  and month != '' ">
+                <![CDATA[t.month= #{month},]]>
+            </if>
+            <if test="grade != null  and grade != '' ">
+                <![CDATA[t.grade= #{grade},]]>
+            </if>
+            <if test="vnum != null  and vnum != '' ">
+                <![CDATA[t.vnum= #{vnum},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+</mapper>

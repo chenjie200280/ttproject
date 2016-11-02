@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="moneySalaryType" namespace="/api/moneysalarytype" extends="json-default">
+		<action name="*" class="com.ttsofts.action.money.MoneySalaryTypeAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+	<package name="moneySalary" namespace="/api/moneysalary" extends="json-default">
+		<action name="*" class="com.ttsofts.action.money.MoneySalaryAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+	<package name="moneyPay" namespace="/api/moneypay" extends="json-default">
+		<action name="*" class="com.ttsofts.action.money.MoneyPayAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+	<package name="moneyCard" namespace="/api/moneycard" extends="json-default">
+		<action name="*" class="com.ttsofts.action.money.MoneyCardAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+</struts>

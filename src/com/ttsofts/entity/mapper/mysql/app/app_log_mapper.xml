@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ttsofts.mapper.app.AppLogMapper">
+	<resultMap type="appLog" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<result property="mac" column="mac" javaType="java.lang.String"/>
+		<result property="app_info_id" column="app_info_id" javaType="java.lang.String"/>	
+		<result property="lonlat" column="lonlat" javaType="java.lang.String"/>	
+		<result property="addtime" column="addtime" javaType="java.util.Date"/>	
+	</resultMap>
+	
+	<resultMap type="appLogStatistics" id="statisticsResultMap">
+	    <result property="total" column="total" javaType="java.lang.String"/>
+		<result property="day" column="day" javaType="java.lang.String"/>	
+	</resultMap>
+	
+	
+    <sql id="column">
+        t.id,t.mac,t.app_info_id,t.lonlat,t.addtime
+    </sql>
+	
+	<insert id="add" parameterType="appLog">
+	    insert into app_log (id,mac,app_info_id,lonlat,addtime)
+        values(#{id},#{mac},#{app_info_id},#{lonlat},#{addtime})
+    </insert>
+    
+	
+	<select id="getStatisticsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+   		SELECT COUNT(*) FROM (SELECT COUNT(id) AS total,DATE_FORMAT(ADDTIME,'%Y-%m-%d') AS DAY
+   		FROM app_log  GROUP BY DAY) AS statistics
+    </select>
+    
+	
+	<select id="findByStatistics" parameterType="java.util.Map" resultMap="statisticsResultMap"  >
+     	select count(id) as total,date_format(addtime,'%Y-%m-%d') as day
+   		from app_log  group by day order by day desc
+   		limit #{startRowNum},#{pageSize}
+    </select>
+	
+	
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from app_log t order by t.addtime desc
+    </select>
+</mapper>

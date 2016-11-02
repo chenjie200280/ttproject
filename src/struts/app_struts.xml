@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="appAdvert" namespace="/api/appadvert" extends="json-default">
+		<action name="*" class="com.ttsofts.action.app.AppAdvertAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+	
+	<package name="appAdvertSdk" namespace="/api/appadvertsdk" extends="json-default">
+		<action name="*" class="com.ttsofts.action.app.AppAdvertSdkAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+		
+	<package name="appInfo" namespace="/api/appinfo" extends="json-default">
+		<action name="*" class="com.ttsofts.action.app.AppInfoAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>
+
+	<package name="appLog" namespace="/api/applog" extends="json-default">
+		<action name="*" class="com.ttsofts.action.app.AppLogAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+				<param name="callbackParameter">jsoncallback</param> 
+			</result>
+		</action>
+	</package>	
+</struts>

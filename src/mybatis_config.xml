@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 用户管理 -->
+		<typeAlias alias="userInfoView" type="com.ttsofts.entity.user.UserInfoView" />
+		<typeAlias alias="userMenuView" type="com.ttsofts.entity.user.UserMenuView" />
+		<typeAlias alias="userPower" type="com.ttsofts.entity.user.UserPower" />
+		<typeAlias alias="userInfoPower" type="com.ttsofts.entity.user.UserInfoPower" />
+		<!-- 移动应用 -->
+		<typeAlias alias="appAdvert" type="com.ttsofts.entity.app.AppAdvert" />
+		<typeAlias alias="appAdvertSdk" type="com.ttsofts.entity.app.AppAdvertSdk" />
+		<typeAlias alias="appInfo" type="com.ttsofts.entity.app.AppInfo" />
+		<typeAlias alias="appLog" type="com.ttsofts.entity.app.AppLog" />
+		<typeAlias alias="appLogStatistics" type="com.ttsofts.entity.app.AppLogStatistics" />
+		<!-- 淘宝 -->
+		<typeAlias alias="taoBaoUser" type="com.ttsofts.entity.taobao.TaoBaoUser" />
+		<typeAlias alias="taoBaoTask" type="com.ttsofts.entity.taobao.TaoBaoTask" />
+		<typeAlias alias="taoBaoShop" type="com.ttsofts.entity.taobao.TaoBaoShop" />
+		<!-- 天天收藏夹 -->
+		<typeAlias alias="favInfo" type="com.ttsofts.entity.fav.FavInfo" />
+		<typeAlias alias="favMenu" type="com.ttsofts.entity.fav.FavMenu" />
+		<typeAlias alias="favSite" type="com.ttsofts.entity.fav.FavSite" />
+		<!-- 财产管理 -->
+		<typeAlias alias="moneySalaryType" type="com.ttsofts.entity.money.MoneySalaryType" />
+		<typeAlias alias="moneySalary" type="com.ttsofts.entity.money.MoneySalary" />
+		<typeAlias alias="moneyPay" type="com.ttsofts.entity.money.MoneyPay" />
+		<typeAlias alias="moneyCard" type="com.ttsofts.entity.money.MoneyCard" />
+	</typeAliases>
+	<mappers>
+		<!-- 用户管理 -->
+		<mapper resource="com/ttsofts/entity/mapper/mysql/user/user_info_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/user/user_menu_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/user/user_power_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/user/user_info_power_mapper.xml" />
+		<!-- 移动应用 -->
+		<mapper resource="com/ttsofts/entity/mapper/mysql/app/app_advert_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/app/app_advert_sdk_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/app/app_info_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/app/app_log_mapper.xml" />
+		<!-- 淘宝 -->
+		<mapper resource="com/ttsofts/entity/mapper/mysql/taobao/taobao_user_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/taobao/taobao_task_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/taobao/taobao_shop_mapper.xml" />
+		<!-- 天天收藏网 -->
+		<mapper resource="com/ttsofts/entity/mapper/mysql/fav/fav_info_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/fav/fav_menu_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/fav/fav_site_mapper.xml" />
+		<!-- 财产管理 -->
+		<mapper resource="com/ttsofts/entity/mapper/mysql/money/money_salary_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/money/money_salary_type_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/money/money_pay_mapper.xml" />
+		<mapper resource="com/ttsofts/entity/mapper/mysql/money/money_card_mapper.xml" />
+	</mappers>
+</configuration>

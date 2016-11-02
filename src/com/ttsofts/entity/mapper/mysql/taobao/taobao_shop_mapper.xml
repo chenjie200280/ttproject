@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.taobao.TaoBaoShopMapper">
+	<resultMap type="taoBaoShop" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="title" column="title" javaType="java.lang.String" />
+		<result property="desc" column="desc" javaType="java.lang.String" />
+		<result property="url" column="url" javaType="java.lang.String" />
+		<result property="imageUrl" column="imageUrl" javaType="java.lang.String" />
+		<result property="typeid" column="typeid" javaType="java.lang.String" />
+	</resultMap>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		t.id,t.title,t.content,t.url,t.imageUrl,t.typeid
+		from taobao_shop t
+		<include refid="sql_where" />
+	</select>
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		t.id,t.title,t.content,t.url,t.imageUrl,t.typeid
+		from taobao_shop t
+	</select>
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="title != null  and title != '' ">
+                <![CDATA[
+		              AND t.title = #{title}
+            ]]>
+			</if>
+			<if test="typeid != null  and typeid != '' ">
+                <![CDATA[
+		              AND t.typeid = #{typeid}
+            ]]>
+			</if>
+		</where>
+	</sql>
+	<insert id="add" parameterType="taoBaoShop">
+	    insert into taobao_shop (id,title,content,url,imageUrl,typeid)
+        values(#{id},#{title},#{content},#{url},#{imageUrl},#{typeid})
+    </insert>
+    <update id="update" parameterType="taoBaoShop">
+        update taobao_shop t
+        <set>
+            <if test="title != null  and title != '' ">
+                <![CDATA[t.title= #{title},]]>
+            </if>
+            <if test="content != null  and content != '' ">
+                <![CDATA[t.content= #{content},]]>
+            </if>
+            <if test="url != null  and url != '' ">
+                <![CDATA[t.url= #{url},]]>
+            </if>
+            <if test="imageUrl != null  and imageUrl != '' ">
+                <![CDATA[t.imageUrl= #{imageUrl},]]>
+            </if>
+            <if test="typeid != null  and typeid != '' ">
+                <![CDATA[t.typeid= #{typeid},]]>
+            </if>
+           
+        </set>
+        where t.id=#{id}
+    </update>
+</mapper>

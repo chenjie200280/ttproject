@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.app.AppAdvertMapper">
+	<resultMap type="appAdvert" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String"/>
+		<id property="app_info_id" column="app_info_id" javaType="java.lang.String"/>
+		<id property="location" column="location" javaType="java.lang.String"/>
+		<id property="sdkid" column="sdkid" javaType="java.lang.String"/>
+		<id property="status" column="status" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<sql id="column">
+        t.id,t.app_info_id,t.location,t.sdkid,t.status
+    </sql>
+    
+    <select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from app_advert t
+	</select>
+	
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from app_advert t
+		<include refid="sql_where" />
+		order by t.location
+	</select>
+	
+	<insert id="add" parameterType="appAdvert">
+	    insert into app_advert (id,app_info_id,location,sdkid,status)
+        values(#{id},#{app_info_id},#{location},#{sdkid},#{status})
+    </insert>
+    
+    <update id="update" parameterType="appAdvert">
+        update app_advert t
+        <set>
+            <if test="app_info_id != null  and app_info_id != '' ">
+                <![CDATA[t.app_info_id= #{app_info_id},]]>
+            </if>
+            <if test="location != null  and location != '' ">
+                <![CDATA[t.location= #{location},]]>
+            </if>
+            <if test="sdkid != null  and sdkid != '' ">
+                <![CDATA[t.sdkid= #{sdkid},]]>
+            </if>
+            <if test="status != null  and status != '' ">
+                <![CDATA[t.status= #{status},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from app_advert where id = #{id};
+    </delete>
+    
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="app_info_id != null  and app_info_id != '' ">
+                <![CDATA[
+		              AND t.app_info_id = #{app_info_id}
+            ]]>
+			</if>
+		</where>
+	</sql>
+</mapper>

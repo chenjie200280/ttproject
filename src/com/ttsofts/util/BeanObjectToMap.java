@@ -1,0 +1,35 @@
+package com.ttsofts.util;
+
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+
+public class BeanObjectToMap {
+
+	public static Map<String, Object> convertBean(Object bean) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		if (bean != null) {
+			Class<? extends Object> type = bean.getClass();
+			BeanInfo beanInfo = Introspector.getBeanInfo(type);
+			PropertyDescriptor[] propertyDescriptors = beanInfo
+					.getPropertyDescriptors();
+			for (int i = 0; i < propertyDescriptors.length; i++) {
+				PropertyDescriptor descriptor = propertyDescriptors[i];
+				String propertyName = descriptor.getName();
+				if (!propertyName.equals("class")) {
+					Method readMethod = descriptor.getReadMethod();
+					Object resultMap = readMethod.invoke(bean, new Object[0]);
+					if (resultMap != null) {
+						returnMap.put(propertyName, resultMap);
+					} else {
+						returnMap.put(propertyName, null);
+					}
+				}
+			}
+		}
+		return returnMap;
+	}
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!--配置数据源属性文件  -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/configs/config.properties</value>
+		</property>
+	</bean>
+	
+	<!--配置数据源  -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driver}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.pwd}</value>
+		</property>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	    <property name="configLocation" value="classpath:mybatis_config.xml" />  
+	    <property name="dataSource" ref="dataSource" />  
+	</bean> 
+	<!-- 用户系统 -->
+  	<import resource="spring/user/user_info_spring.xml"/>
+  	<import resource="spring/user/user_menu_spring.xml"/>
+  	<import resource="spring/user/user_power_spring.xml"/>
+  	<import resource="spring/user/user_info_power_spring.xml"/>
+  	<!-- 移动应用 -->
+  	<import resource="spring/app/app_advert_sdk_spring.xml"/>
+  	<import resource="spring/app/app_advert_spring.xml"/>
+  	<import resource="spring/app/app_info_spring.xml"/>
+  	<import resource="spring/app/app_log_spring.xml"/>
+
+  	<!--淘宝刷单 -->
+  	<import resource="spring/taobao/taobao_user_spring.xml"/>
+  	<import resource="spring/taobao/taobao_task_spring.xml"/>
+  	<import resource="spring/taobao/taobao_shop_spring.xml"/>
+  	<!-- 天天收藏网 -->
+  	<import resource="spring/fav/fav_info_spring.xml"/>
+  	<import resource="spring/fav/fav_menu_spring.xml"/>
+  	<import resource="spring/fav/fav_site_spring.xml"/>
+  	<!-- 资金管理 -->
+  	<import resource="spring/money/money_salary_type_spring.xml"/>
+  	<import resource="spring/money/money_card_spring.xml"/>
+  	<import resource="spring/money/money_salary_spring.xml"/>
+  	<import resource="spring/money/money_pay_spring.xml"/>
+  	
+</beans>

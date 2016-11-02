@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+      >
+    <bean id="moneyPayMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ttsofts.mapper.money.MoneyPayMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="moneyPayService" class="com.ttsofts.service.money.MoneyPayService">
+		<property name="moneyPayMapper" ref="moneyPayMapper"/>
+	</bean>
+
+	<bean id="moneyPayAction" class="com.ttsofts.action.money.MoneyPayAction">
+		<property name="moneyPayService" ref="moneyPayService"/>
+	</bean>
+</beans>

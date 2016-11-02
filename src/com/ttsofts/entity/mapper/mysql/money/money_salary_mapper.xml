@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttsofts.mapper.money.MoneySalaryMapper">
+	<resultMap type="moneySalary" id="resultMap">
+		<id property="id" column="id" javaType="java.lang.String" />
+		<result property="userid" column="userid" javaType="java.lang.String" />
+		<result property="typeid" column="typeid" javaType="java.lang.String" />
+		<result property="typename" column="typename" javaType="java.lang.String" />
+		<result property="planmoney" column="planmoney" javaType="java.lang.String" />
+		<result property="money" column="money" javaType="java.lang.String" />
+		<result property="remark" column="remark" javaType="java.lang.String" />
+		<result property="addtime" column="addtime" javaType="java.util.Date" />
+	</resultMap>
+	<sql id="column">
+        t.id,t.userid,t.typeid,t.typename,t.planmoney,t.money,t.remark,t.addtime
+    </sql>
+	<select id="findByMap" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from money_salary_view t
+		<include refid="sql_where" />
+		order by t.id desc
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from money_salary_view t
+        order by t.id desc
+    </select>
+    
+    <select id="findByPage"  parameterType="java.util.Map" resultMap="resultMap">
+        select
+        <include refid="column"/>
+        from
+        money_salary_view t
+        order by t.id desc
+        limit #{startRowNum},#{pageSize}
+    </select>
+	
+	<select id="findByAll" parameterType="java.util.Map" resultMap="resultMap">
+		select
+		<include refid="column"/>
+		from money_salary_view t
+		order by t.id desc
+	</select>
+	<!--查询条件 -->
+	<sql id="sql_where">
+		<where>
+			1=1
+			<if test="userid != null  and userid != '' ">
+                <![CDATA[
+		              AND t.userid = #{userid}
+            ]]>
+			</if>
+			<if test="typeid != null  and typeid != '' ">
+                <![CDATA[
+		              AND t.typeid = #{typeid}
+            ]]>
+			</if>
+			<if test="typename != null  and typename != '' ">
+                <![CDATA[
+		              AND t.typename = #{typename}
+            ]]>
+			</if>
+			<if test="planmoney != null  and planmoney != '' ">
+                <![CDATA[
+		              AND t.planmoney = #{planmoney}
+            ]]>
+			</if>
+			<if test="money != null  and money != '' ">
+                <![CDATA[
+		              AND t.money = #{money}
+            ]]>
+			</if>
+			<if test="remark != null  and remark != '' ">
+                <![CDATA[
+		              AND t.remark = #{remark}
+            ]]>
+			</if>
+		</where>
+	</sql>
+	<insert id="add" parameterType="moneySalary">
+	    insert into money_salary (id,userid,typeid,planmoney,money,remark,addtime)
+        values(#{id},#{userid},#{typeid},#{planmoney},#{money},#{remark},#{addtime})
+    </insert>
+    <update id="update" parameterType="moneySalary">
+        update money_salary t
+        <set>
+            <if test="userid != null  and userid != '' ">
+                <![CDATA[t.userid= #{userid},]]>
+            </if>
+            <if test="typeid != null  and typeid != '' ">
+                <![CDATA[t.typeid= #{typeid},]]>
+            </if>
+            <if test="planmoney != null  and planmoney != '' ">
+                <![CDATA[t.planmoney= #{planmoney},]]>
+            </if>
+            <if test="money != null  and money != '' ">
+                <![CDATA[t.money= #{money},]]>
+            </if>
+            <if test="remark != null  and remark != '' ">
+                <![CDATA[t.remark= #{remark},]]>
+            </if>
+            <if test="addtime != null  and addtime != '' ">
+                <![CDATA[t.addtime= #{addtime},]]>
+            </if>
+        </set>
+        where t.id=#{id}
+    </update>
+      <delete id="deleteById" parameterType="java.lang.String">
+        delete from money_salary where id = #{id};
+    </delete>
+</mapper>
